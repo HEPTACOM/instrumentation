@@ -44,6 +44,14 @@ sourceability_instrumentation:
         # This is really useful for development along with https://github.com/sourceability/console-toolbar-bundle
         symfony:
             enabled:              false
+
+        # Export spans to Zipkin based on the opentelemetry-php reference implementation,
+        # for details see https://github.com/open-telemetry/opentelemetry-php
+        zipkin:
+            enabled:              false
+            profiler_name:        'ApplicationProfiler'
+            url:                  'http://localhost:9411/api/v2/spans'
+
     listeners:
 
         # Automatically instrument commands
