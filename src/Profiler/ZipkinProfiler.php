@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Sourceability\Instrumentation\Profiler;
 
-use GuzzleHttp\Client;
-use Nyholm\Psr7\Factory\Psr17Factory;
+use Http\Discovery\HttpClientDiscovery;
+use Http\Discovery\Psr17FactoryDiscovery;
 use OpenTelemetry\Contrib\Zipkin\Exporter as ZipkinExporter;
 use OpenTelemetry\Sdk\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\Trace\Span;
@@ -25,9 +25,9 @@ class ZipkinProfiler implements ProfilerInterface
         $this->exporter = new ZipkinExporter(
             $name,
             $url,
-            new Client(),
-            new Psr17Factory(),
-            new Psr17Factory()
+            HttpClientDiscovery::find(),
+            Psr17FactoryDiscovery::findRequestFactory(),
+            Psr17FactoryDiscovery::findStreamFactory()
         );
         $this->tracer = (new TracerProvider())
         ->addSpanProcessor(new SimpleSpanProcessor($this->exporter))

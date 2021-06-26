@@ -14,7 +14,8 @@
     "php": "^7.4 || ^8.0",
     "guzzlehttp/guzzle": "^7.3",
     "nyholm/psr7": "^1.2.1",
-    "open-telemetry/opentelemetry": "^0.0.2"
+    "open-telemetry/opentelemetry": "^0.0.2",
+    "php-http/discovery": "^1.14"
   },
   "require-dev": {
     "datadog/dd-trace": "^0.60.0",
