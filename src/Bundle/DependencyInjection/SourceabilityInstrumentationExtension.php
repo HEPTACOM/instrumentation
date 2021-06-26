@@ -40,6 +40,12 @@ class SourceabilityInstrumentationExtension extends ConfigurableExtension
             $loader->load('profiler_tideways.yaml');
         }
 
+        if ($config['profilers']['zipkin']['enabled']) {
+            $container->setParameter('zipkin.profiler_name', $config['profilers']['zipkin']['profiler_name']);
+            $container->setParameter('zipkin.url', $config['profilers']['zipkin']['url']);
+            $loader->load('profiler_zipkin.yaml');
+        }
+
         if (interface_exists('Symfony\\Component\\Messenger\\Middleware\\MiddlewareInterface')) {
             $loader->load('messenger_middleware.yaml');
         }

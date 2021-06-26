@@ -53,6 +53,19 @@ This is really useful for development along with https://github.com/sourceabilit
 CODE_SAMPLE
                             )
                         ->end()
+                        ->arrayNode('zipkin')
+                            ->children()
+                                ->scalarNode('profiler_name')->end()
+                                ->scalarNode('url')->end()
+                            ->end()
+                            ->canBeEnabled()
+                            ->info(
+                            <<<'CODE_SAMPLE'
+Implemented with opentelemetry-php, for reference see
+https://github.com/open-telemetry/opentelemetry-php
+CODE_SAMPLE
+                            )
+                        ->end()
                     ->end()
                 ->end()
                 ->arrayNode('listeners')

@@ -1,0 +1,8 @@
+services:
+    Sourceability\Instrumentation\Profiler\ZipkinProfiler:
+        class: 'Sourceability\Instrumentation\Profiler\ZipkinProfiler'
+        arguments:
+            $name: '%zipkin.profiler_name%'
+            $url: '%zipkin.url%'
+        tags:
+            - { name: 'sourceability_instrumentation.profiler' }
